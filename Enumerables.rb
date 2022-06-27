@@ -79,23 +79,88 @@ class Array
     end
 
     def my_zip(*arg) # args = []
-        empty_arr = []
-        new_arr = self.length
+
+        new_arr = []
 
         i = 0
         while i < self.length
+            arr = [self[i]]
             arg.each do |ele|
-
-
-            new_arr << ele
+                arr << ele[i]
+            end
+            new_arr << arr
             i += 1
+            
         end
         return new_arr
     end
 
+    def my_rotate(n)
+        if n > 0 
+            n.times do 
+                first = self.shift
+                # p first 
+                self.push(first)
+                # p self
+            end
+            return self
+        else
+            abs_n = n*-1
+            abs_n.times do 
+                last = self.pop
+                self.unshift(last)
+            end
+            return self
+
+        end
+    end
+
+    def my_join(str="")
+        new = ""
+        
+        self.each do |i|
+            new += i + str
+        end
+        new
+    
+    
+    end
+
 end
 
-p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
+#my_join
+a = [ "a", "b", "c", "d" ]
+p a.my_join         # => "abcd"
+p a.my_join("$")    # => "a$b$c$d"
+
+#myrotate
+# a = [ "a", "b", "c", "d" ]
+# b = [ "a", "b", "c", "d" ]
+# c = [ "a", "b", "c", "d" ]
+# d = [ "a", "b", "c", "d" ]
+# p a.my_rotate(1)      #=> ["b", "c", "d", "a"]
+# p b.my_rotate(2)      #=> ["c", "d", "a", "b"]
+# p c.my_rotate(-3)     #=> ["b", "c", "d", "a"]
+# p d.my_rotate(15)     #=> ["d", "a", "b", "c"]
+
+
+#my_zip
+# a = [ 4, 5, 6 ]
+# b = [ 7, 8, 9 ]
+# p [1, 2, 3].my_zip(a, b) # => [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+# p a.my_zip([1,2], [8])   # => [[4, 1, 8], [5, 2, nil], [6, nil, nil]]
+# p [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
+
+# c = [10, 11, 12]
+# d = [13, 14, 15]
+# p [1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
+
+
+
+
+
+#flatten
+# p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
 
 
 # my_any, my_all
