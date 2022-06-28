@@ -126,12 +126,33 @@ class Array
     
     end
 
+    def my_reverse
+        new_arr = []
+
+        self.length.times do 
+            new_arr << self.pop
+        end
+
+        # i = 0
+        # while i <= self.length
+            # new_arr << self.pop
+        #     i += 1
+        # end
+        return new_arr
+    end
+
+    def 
+
 end
 
+#myreverse
+# p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+# p [ 1 ].my_reverse               #=> [1]
+
 #my_join
-a = [ "a", "b", "c", "d" ]
-p a.my_join         # => "abcd"
-p a.my_join("$")    # => "a$b$c$d"
+# a = [ "a", "b", "c", "d" ]
+# p a.my_join         # => "abcd"
+# p a.my_join("$")    # => "a$b$c$d"
 
 #myrotate
 # a = [ "a", "b", "c", "d" ]
